@@ -49,34 +49,47 @@
  //Вид 4 - Что-то принимают, что-то возвращают. 
  // в скобках есть аргументы, есть тело
 
- string Method4(int count, string text)
- {
- 	int i = 0;
- 	string result = String.Empty;
- 		while (i < count)
- 		{
- 			result = result + text;
- 			i++;
+//  string Method4(int count, string text)
+//  {
+//  	int i = 0;
+//  	string result = String.Empty;
+//  		while (i < count)
+//  		{
+//  			result = result + text;
+//  			i++;
 
-		}
-		return result;
+// 		}
+// 		return result;
 
- }
-//Как вызываются такие методы: скобки обязательно
-string result = Method4(10, "xvnmz" + "\t"); // "\t" - табуляция
-Console.WriteLine(result);
+//  }
+// //Как вызываются такие методы: скобки обязательно
+// string result = Method4(10, "xvnmz" + "\t"); // "\t" - табуляция
+// Console.WriteLine(result);
 
-//Второй способ, цикл for
-string Method41(int count, string text)
+// //Второй способ, цикл for
+// string Method41(int count, string text)
+// {
+
+// 	string result = String.Empty;
+// 	for (int i = 0; i < count; i++) //Инициализация счетчика, i < count, i < length
+// 	{
+// 		result = result + text;
+// 	}
+// 	return result;
+// }	
+// //Как вызываются такие методы: скобки обязательно
+// string res = Method41(10, "Пусть будет мир! " + "\n"); // "\n" - перенос на новую строку
+// Console.WriteLine(res);
+
+//*****************************************************************************
+// 1. Выводим на экран таблицу умножения (интерполяция строк)
+
+for (int i = 2; i <= 10; i++)
 {
-
-	string result = String.Empty;
-	for (int i = 0; i < count; i++) //Инициализация счетчика, i < count, i < length
+	for (int j = 2; j <= 10; j++)
 	{
-		result = result + text;
+		Console.Write($"{i} x {j} = {i * j}" + "\t", "  ");
 	}
-	return result;
-}	
-//Как вызываются такие методы: скобки обязательно
-string res = Method41(10, "Пусть будет мир! " + "\n"); // "\n" - перенос на новую строку
-Console.WriteLine(res);
+	Console.WriteLine();
+}
+
