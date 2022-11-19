@@ -200,14 +200,17 @@
 //*****************************************************************************
 // 9. Игра в пирамидки
 
+//*******Головоломка "Пирамидки"***********
+//      |       |        |         есть 3 штыря, на первом находится 3 блинчика, надо
+//      |       |        |         переместить блинчики с первого на третий в том же порядке
+//     _|_     _|_      _|_        string with - первый штырь, string on - третий, string some - второй, count - количество блинчиков
 // void Towers(string with = "1", string on = "3", string some = "2", int count = 5)
 // {
-// 	if (count > 1) Towers(with, some, on, count - 1);
-// 	Console.WriteLine($"{with} >> {on}");
-// 	if (count > 1) Towers(some, on, with, count - 1);
+//       if (count > 1) Towers(with, some, on, count - 1);
+//             Console.WriteLine($"{with} >> {on}");
+//             if (count > 1) Towers(some, on, with, count - 1);
 // }
 // Towers();
-
 //******************************************************************************
 //10. Обход разных структур на примере: ((4-2) * (1+3)) / 10
 // где разложили по иерархии знаки и цифры: / = 1, * = 2, 10 = 3 и т.д.
@@ -232,3 +235,94 @@
 
 //***********************************************************************************************************************
 // 11. Опять Фибоначчи (итерации и рекурсия) с подсчетом времени вычисления
+// decimal fRec = 0;
+// decimal fIte = 0;
+
+// decimal FibonacciRecursion(int n)
+// {
+//     fRec++;
+//     return n == 0 || n == 1 ? 1 : FibonacciRecursion(n - 1) + FibonacciRecursion(n - 2);
+// }
+
+// decimal FibonacciIteration(int n)
+// {
+// 	fIte++;
+// 	decimal result = 1;
+// 	decimal f0 = 1;
+// 	decimal f1 = 1;
+// 	for (int i = 2; i <= n; i++)
+// 	{
+// 		result =  f0 + f1;
+
+// 		f0 = f1;
+// 		f1 = result;
+// 		fIte++;
+// 	}
+// 	return result;
+// }
+
+// Console.ReadLine();
+// DateTime dt = DateTime.Now;
+// for (int n = 10; n < 10; n++)
+// {
+// 	Console.WriteLine($"FibonacciIteration({n}) = {FibonacciIteration(n)} fIte = {fIte.ToString("### ### ###"), -15}");
+// 	fIte = 0;
+// }
+// System.Console.WriteLine((DateTime.Now - dt).TotalMilliseconds);
+// Console.WriteLine();
+// Console.ReadLine();
+// for (int n = 10; n < 40; n++)
+// {
+//     Console.WriteLine($"FibonacciRecursion({n}) = {FibonacciRecursion(n)} fRec = {fRec.ToString("### ### ###"), -15}");
+//     fRec = 0;
+// }
+// Console.ReadLine();
+
+
+// ************Ошибка при вызове рекурсии****************
+// int i = 0;
+// void Rec()
+// {
+// 	System.Console.WriteLine(i++);
+// 	Rec();
+// }
+// Rec();
+// *************************************************************************************
+// 13. Закрашиваем квадрат
+
+int[,] pic = new int[50, 50];
+for (int i = 0; i < 50; i++)
+{
+ pic[0, i] = 1;
+ pic[i, 0] = 1;
+ pic[i, 49] = 1;
+ pic[49, i] = 1;
+}
+PrintImage(pic);
+FillImage(1,1);
+Console.WriteLine();
+PrintImage(pic);
+
+void PrintImage(int[,] image)
+{
+	for (int i = 0; i < image.GetLength(0); i++)
+	{
+		for (int j = 0; j < image.GetLength(1); j++)
+		{
+			if (image[i, j] == 0) Console.Write($" ");
+			else Console.Write($"*");
+		}
+		Console.WriteLine();
+	}
+}
+void FillImage(int row, int col)
+{
+	if (pic[row, col] == 0)
+	{
+		pic[row, col] = 1;
+		FillImage(row - 1, col);
+		FillImage(row, col - 1);
+		FillImage(row + 1, col);
+		FillImage(row, col + 1);
+	}
+}
