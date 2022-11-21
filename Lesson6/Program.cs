@@ -37,3 +37,27 @@
 // }
 //***********************************************************************************
 // Программа рисует случайные символы на консоли
+
+// **********Рисует случайные числа на консоли**************
+// Random r = new Random();
+// Console.CursorVisible = false;
+// while (true)
+// {
+// 	Console.SetCursorPosition(
+// 		left: r.Next(Console.WindowWidth),
+// 		top: r.Next(Console.WindowHeight)
+// 	);
+// 	Console.Write(r.Next(10));
+// 	Thread.Sleep(1);
+// }
+// int t = r.Next(10);
+// if (t <= 2)
+// 	return (char) ('0' + r.Next(10));
+// else 
+// 	if (t <= 4)
+// 	return (char) ('a' + r.Next(27));
+// else 
+// 	if (t <= 6)
+// 	return (char) ('A' + r.Next(27));
+// else 
+// 	return (char) (r.Next(32, 255));
